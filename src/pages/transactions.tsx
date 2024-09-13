@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { CreateTransaction } from "../hooks/useTransactions";
-import "./Transactions.css"; // Include custom styles here
+import Modal from "./modal";
+import "./Transactions.css";
 
 const Transactions: React.FC = () => {
   const {
@@ -16,6 +17,20 @@ const Transactions: React.FC = () => {
     setSender,
     setDescription,
   } = CreateTransaction();
+
+  const [showModal, setShowModal] = useState(false); // Modal visibility state
+
+  // Function to handle closing the modal
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
+  // Open modal when transaction is successful
+  React.useEffect(() => {
+    if (transactionStatus && transactionStatus.includes("successful")) {
+      setShowModal(true); // Show modal on success
+    }
+  }, [transactionStatus]);
 
   return (
     <div className="transaction-container">
@@ -75,17 +90,13 @@ const Transactions: React.FC = () => {
         </div>
       </form>
 
-      {/* Display transaction status */}
-      {transactionStatus && (
-        <div
-          style={{
-            marginTop: "20px",
-            color: transactionStatus.includes("failed") ? "red" : "green",
-          }}
-        >
-          <p>{transactionStatus}</p>
-        </div>
-      )}
+      {/* Modal for showing success transaction */}
+      <Modal
+        show={showModal}
+        onClose={closeModal}
+        title="Transaction Successful"
+        body={`Transaction was successful from ${sender} to ${recipient}.`}
+      />
     </div>
   );
 };
