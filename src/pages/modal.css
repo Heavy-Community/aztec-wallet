@@ -1,0 +1,77 @@
+/* Overlay Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7); /* Dark overlay */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-in-out; /* Animation for the modal */
+}
+
+/* Modal Content Styling */
+.modal-content {
+  background-color: #1c1c1e;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 500px; /* Set a max width */
+  width: 100%;
+  color: white;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  text-align: center; /* Center the text */
+  animation: slideDown 0.4s ease-in-out; /* Adding the animation */
+}
+
+.modal-header {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Word wrapping for long text */
+.modal-body {
+  margin-bottom: 20px;
+  word-wrap: break-word; /* Ensure text doesn't overflow */
+  word-break: break-all; /* Break long words */
+}
+
+/* Button Styling */
+.modal-footer {
+  text-align: right;
+}
+
+.modal-footer button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.modal-footer button:hover {
+  background-color: #0056b3;
+}
+
+/* Animation for Modal appearance */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
