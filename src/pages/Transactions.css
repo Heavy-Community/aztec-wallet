@@ -69,8 +69,8 @@
 }
 
 .continue-button {
-  background-color: #007aff;
-  color: white;
+  background-color: #f0f0f3;
+  color: #27183f;
 }
 
 .cancel-button:disabled,
