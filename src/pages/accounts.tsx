@@ -6,10 +6,21 @@ import "./Accounts.css"; // Include custom styles for this page
 const CreateAndDeploySchnorrAccount: React.FC = () => {
   const { createSchnorrAccount, wait, addresses } = useSchnorr(); // Get the list of addresses
   const { createEcdsaAccount, wait_ecdsa, ecdsa_addresses } = useEcdsa();
-  const [isModalOpen, setModalOpen] = useState(false); // Modal state
+  const [isModalOpen, setIsModalOpen] = useState(false); // Modal state
+  const [isClosing, setIsClosing] = useState(false); // Track if modal is closing
 
-  const openModal = () => setModalOpen(true); // Open modal
-  const closeModal = () => setModalOpen(false); // Close modal
+  const openModal = () => {
+    setIsModalOpen(true);
+    setIsClosing(false); // Reset closing state when opening
+  };
+
+  const closeModal = () => {
+    // Trigger closing animation before actually closing the modal
+    setIsClosing(true);
+    setTimeout(() => {
+      setIsModalOpen(false);
+    }, 400); // Match the duration of your closing animation (400ms)
+  };
 
   return (
     <div className="account-container">
@@ -22,9 +33,11 @@ const CreateAndDeploySchnorrAccount: React.FC = () => {
 
       {/* Modal Section */}
       {isModalOpen && (
-        <div className="modal-overlay" onClick={closeModal}>
+        <div
+          className={`modal ${isClosing ? "modal-closing" : "modal-open"}`}
+          onClick={closeModal}
+        >
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
-            {/* Updated modal header */}
             <h2 className="modal-header">Choose an Account</h2>
 
             <form onSubmit={createSchnorrAccount} className="account-form">
