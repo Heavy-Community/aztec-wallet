@@ -52,7 +52,7 @@ export default (_, argv) => ({
     },
   },
   devServer: {
-    port: 5500,
+    port: 5502,
     historyApiFallback: true,
     open: true,
   },
