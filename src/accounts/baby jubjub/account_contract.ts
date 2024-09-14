@@ -2,6 +2,7 @@ import { DefaultAccountContract } from "@aztec/accounts/defaults";
 import { BabyJubJub, BabyJubJubScalar } from ".";
 import { AuthWitness, AuthWitnessProvider, CompleteAddress, ContractArtifact } from "@aztec/aztec.js";
 import { type Fr } from '@aztec/foundation/fields';
+import { BabyJubJubAccountContractArtifact } from "../../../artifacts/BabyJubJubAccount";
 /**
  * Account contract that authenticates transactions using BabyJubJub signatures
  * verified against a BabyJubJub public key stored in an immutable encrypted note.

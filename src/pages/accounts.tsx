@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { useSchnorr } from "../hooks/useSchnorr";
 import { useEcdsa } from "../hooks/useEcdsa";
+import { useBabyJubJub } from "../hooks/useBabyJubJub";
 import "./Accounts.css";
 
 const CreateAndDeploySchnorrAccount: React.FC = () => {
   const { createSchnorrAccount, wait, addresses } = useSchnorr();
   const { createEcdsaAccount, wait_ecdsa, ecdsa_addresses } = useEcdsa();
+  const { createBabyJubJubAccount, wait_babyjub } = useBabyJubJub();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
 
@@ -53,6 +55,17 @@ const CreateAndDeploySchnorrAccount: React.FC = () => {
                 {wait_ecdsa
                   ? "Creating ECDSA Account..."
                   : "Create ECDSA Account"}
+              </button>
+            </form>
+            <form onSubmit={createBabyJubJubAccount} className="account-form">
+              <button
+                type="submit"
+                disabled={wait_babyjub}
+                className="action-button"
+              >
+                {wait_babyjub
+                  ? "Creating BabyJubJub Account..."
+                  : "Create BabyJubJub Account"}
               </button>
             </form>
 

@@ -20,6 +20,7 @@ import { toast } from "react-toastify";
 import { SchnorrHardcodedAccountContract } from "../../artifacts/SchnorrHardcodedAccount";
 import { AccountInterface } from "@aztec/aztec.js/account";
 import { DefaultAccountInterface } from "@aztec/accounts/defaults";
+import { setupSandbox } from "./utils";
 
 const PRIVATE_KEY = GrumpkinScalar.fromString(
   "0xd35d743ac0dfe3d6dbe6be8c877cb524a00ab1e3d52d7bada095dfc8894ccfa"
@@ -69,13 +70,6 @@ class SchnorrAccountContract
     };
   }
 }
-
-const setupSandbox = async () => {
-  const { PXE_URL = "http://localhost:8080" } = process.env;
-  const pxe = createPXEClient(PXE_URL);
-  await waitForPXE(pxe);
-  return pxe;
-};
 
 export function useSchnorr() {
   const [wait, setWait] = useState(false);

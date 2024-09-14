@@ -21,6 +21,7 @@ import { toast } from "react-toastify";
 import { EcdsaKAccountContract } from "../../artifacts/EcdsaKAccount";
 import { AccountInterface } from "@aztec/aztec.js/account";
 import { DefaultAccountInterface } from "@aztec/accounts/defaults";
+import { setupSandbox } from "./utils";
 
 const PRIVATE_KEY = GrumpkinScalar.fromString(
   "0xd35d743ac0dfe3d6dbe6be8c877cb524a00ab1e3d52d7bada095dfc8894ccfa"
@@ -70,21 +71,6 @@ class ECDSAAccountContract
       },
     };
   }
-}
-
-const setupSandbox = async () => {
-  const { PXE_URL = "http://localhost:8080" } = process.env;
-  const pxe = createPXEClient(PXE_URL);
-  await waitForPXE(pxe);
-  return pxe;
-};
-
-// Convert a hex string to a byte array
-function hexToBytes(hex: any) {
-  let bytes = [];
-  for (let c = 0; c < hex.length; c += 2)
-    bytes.push(parseInt(hex.substr(c, 2), 16));
-  return bytes;
 }
 
 export function useEcdsa() {

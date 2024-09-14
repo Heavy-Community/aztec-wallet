@@ -24,7 +24,7 @@ export class BabyJubJub {
      */
     public computePublicKey(privateKey: BabyJubJubScalar): PublicKey {
         this.wasm.writeMemory(0, privateKey.toBuffer());
-        this.wasm.call('babyjubjub_compute_public_key', 0, 32);
+        this.wasm.call('schnorr_compute_public_key', 0, 32);
         return Point.fromBuffer(Buffer.from(this.wasm.getMemorySlice(32, 96)));
     }
 
@@ -38,7 +38,7 @@ export class BabyJubJub {
         const mem = this.wasm.call('bbmalloc', msg.length + 4);
         this.wasm.writeMemory(0, privateKey.toBuffer());
         this.wasm.writeMemory(mem, Buffer.concat([numToUInt32BE(msg.length), msg]));
-        this.wasm.call('babyjubjub_construct_signature', mem, 0, 32, 64);
+        this.wasm.call('schnorr_construct_signature', mem, 0, 32, 64);
 
         return new BabyJubJubSignature(Buffer.from(this.wasm.getMemorySlice(32, 96)));
     }
@@ -56,7 +56,7 @@ export class BabyJubJub {
         this.wasm.writeMemory(64, sig.s);
         this.wasm.writeMemory(96, sig.e);
         this.wasm.writeMemory(mem, Buffer.concat([numToUInt32BE(msg.length), msg]));
-        this.wasm.call('babyjubjub_verify_signature', mem, 0, 64, 96, 128);
+        this.wasm.call('schnorr_verify_signature', mem, 0, 64, 96, 128);
         const result = this.wasm.getMemorySlice(128, 129);
         return !Buffer.alloc(1, 0).equals(result);
     }
