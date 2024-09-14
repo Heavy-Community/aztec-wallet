@@ -90,7 +90,7 @@ export function useSchnorr() {
     setWait(true);
 
     try {
-      // const pxe = await setupSandbox();
+      const pxe = await setupSandbox();
       const salt = Fr.random();
       const wallet = await deployerEnv.getWallet();
       const deployment_tx = SchnorrAccountContract.deploy(wallet).send({
@@ -109,9 +109,7 @@ export function useSchnorr() {
         await deployment_tx.deployed()
       ).address.toString();
 
-      // let k = await pxe.registerAccount(salt, contract.partialAddress);
-      // // console.log("k is: ", k);
-      // // console.log("contract.partialAddress is: ", contract.partialAddress);
+      // await pxe.registerAccount(new Fr.random(), contract.partialAddress);
 
       setNewAccountAddress(accountAddressStr);
       setAddresses((prevAddresses) => [...prevAddresses, accountAddressStr]); // Add new address to the array

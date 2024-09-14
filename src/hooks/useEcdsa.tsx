@@ -112,7 +112,8 @@ export function useEcdsa() {
         contractAddressSalt: salt,
       });
 
-      await pxe.registerAccount(salt, deployment_tx.instance.address);
+      // private key or imported instance.deploy() | instance.sign()
+      // await pxe.registerAccount(, deployment_tx.instance.address);
 
       console.log(
         "deployment_tx.instance.address: ",

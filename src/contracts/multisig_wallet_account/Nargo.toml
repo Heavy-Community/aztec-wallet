@@ -1,0 +1,7 @@
+[package]
+name = "multisig_wallet_account"
+type = "contract"
+authors = [""]
+compiler_version = ">=0.33.0"
+
+[dependencies]
