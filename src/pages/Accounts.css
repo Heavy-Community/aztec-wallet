@@ -85,14 +85,228 @@
   padding: 10px;
   text-align: left;
   border-bottom: 1px solid #444;
-  white-space: nowrap; /* Prevent text from wrapping */
-  overflow: hidden; /* Hide overflowed text */
-  text-overflow: ellipsis; /* Add ellipsis to truncated text */
-  max-width: 400px; /* Set max width for the address cell */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 400px;
 }
 
 .address-table td:hover {
   overflow: visible;
-  white-space: normal; /* Allow text to wrap when hovered */
-  word-break: break-all; /* Break long text at arbitrary points */
+  white-space: normal;
+  word-break: break-all;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.modal-content {
+  background-color: #1c1c1e;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 500px;
+  width: 100%;
+  color: white;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  animation: slideDownScale 0.4s ease-in-out;
+}
+
+.modal-header {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.close-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.close-button:hover {
+  background-color: #0056b3;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideDownScale {
+  0% {
+    transform: translateY(-20px) scale(0.9);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+.create-account-button {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  background-color: #f0f0f3;
+  color: #27183f;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-bottom: 40px;
+}
+
+.create-account-button:hover {
+  background-color: #cdcdd4;
+}
+.close-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+  animation: slideDownScale 0.4s ease-in-out;
+}
+
+.close-button:hover {
+  background-color: #0056b3;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideDownScale {
+  0% {
+    transform: translateY(-20px) scale(0.9);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+.action-button,
+.close-button {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  background-color: #f0f0f3;
+  color: #27183f;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-bottom: 20px;
+  animation: slideDownScale 0.4s ease-in-out;
+}
+
+.close-button {
+  background-color: #007bff;
+  color: white;
+}
+
+.action-button:hover,
+.close-button:hover {
+  background-color: #cdcdd4;
+}
+
+.close-button:hover {
+  background-color: #0056b3;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideDownScale {
+  0% {
+    transform: translateY(-20px) scale(0.9);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+.modal-header {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 20px;
+  color: white;
+  animation: slideDownScale 0.4s ease-in-out;
+}
+
+.action-button,
+.close-button {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  background-color: #f0f0f3;
+  color: #27183f;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-bottom: 20px;
+  animation: slideDownScale 0.4s ease-in-out;
+}
+
+.close-button {
+  background-color: #007bff;
+  color: white;
+}
+
+.action-button:hover,
+.close-button:hover {
+  background-color: #cdcdd4;
+}
+
+.close-button:hover {
+  background-color: #0056b3;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideDownScale {
+  0% {
+    transform: translateY(-20px) scale(0.9);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
 }
