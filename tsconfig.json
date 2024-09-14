@@ -25,6 +25,7 @@
     "tests/**/*.ts",
     "src/contracts/account_schnorr/target/*.json",
     "src/contracts/ecdsa_k_account/target/*.json",
+    "src/contracts/babyjubjub_account/target/*.json",
     "artifacts/**/*.ts",
     "addresses.json"
   ]
