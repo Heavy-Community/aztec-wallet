@@ -139,19 +139,6 @@
   margin-top: 20px;
 }
 
-.close-button:hover {
-  background-color: #0056b3;
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
 @keyframes slideDownScale {
   0% {
     transform: translateY(-20px) scale(0.9);
@@ -177,6 +164,7 @@
 .create-account-button:hover {
   background-color: #cdcdd4;
 }
+
 .close-button {
   background-color: #007bff;
   color: white;
@@ -188,27 +176,6 @@
   animation: slideDownScale 0.4s ease-in-out;
 }
 
-.close-button:hover {
-  background-color: #0056b3;
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes slideDownScale {
-  0% {
-    transform: translateY(-20px) scale(0.9);
-  }
-  100% {
-    transform: translateY(0) scale(1);
-  }
-}
 .action-button,
 .close-button {
   width: 100%;
@@ -224,36 +191,9 @@
   animation: slideDownScale 0.4s ease-in-out;
 }
 
-.close-button {
-  background-color: #007bff;
-  color: white;
-}
-
 .action-button:hover,
 .close-button:hover {
   background-color: #cdcdd4;
-}
-
-.close-button:hover {
-  background-color: #0056b3;
-}
-
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
-@keyframes slideDownScale {
-  0% {
-    transform: translateY(-20px) scale(0.9);
-  }
-  100% {
-    transform: translateY(0) scale(1);
-  }
 }
 
 .modal-header {
@@ -264,33 +204,9 @@
   animation: slideDownScale 0.4s ease-in-out;
 }
 
-.action-button,
-.close-button {
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  background-color: #f0f0f3;
-  color: #27183f;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-  margin-bottom: 20px;
-  animation: slideDownScale 0.4s ease-in-out;
-}
-
 .close-button {
   background-color: #007bff;
   color: white;
-}
-
-.action-button:hover,
-.close-button:hover {
-  background-color: #cdcdd4;
-}
-
-.close-button:hover {
-  background-color: #0056b3;
 }
 
 @keyframes fadeIn {
@@ -299,14 +215,5 @@
   }
   100% {
     opacity: 1;
-  }
-}
-
-@keyframes slideDownScale {
-  0% {
-    transform: translateY(-20px) scale(0.9);
-  }
-  100% {
-    transform: translateY(0) scale(1);
   }
 }
