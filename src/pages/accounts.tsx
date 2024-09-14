@@ -1,37 +1,34 @@
 import React, { useState } from "react";
 import { useSchnorr } from "../hooks/useSchnorr";
 import { useEcdsa } from "../hooks/useEcdsa";
-import "./Accounts.css"; // Include custom styles for this page
+import "./Accounts.css";
 
 const CreateAndDeploySchnorrAccount: React.FC = () => {
-  const { createSchnorrAccount, wait, addresses } = useSchnorr(); // Get the list of addresses
+  const { createSchnorrAccount, wait, addresses } = useSchnorr();
   const { createEcdsaAccount, wait_ecdsa, ecdsa_addresses } = useEcdsa();
-  const [isModalOpen, setIsModalOpen] = useState(false); // Modal state
-  const [isClosing, setIsClosing] = useState(false); // Track if modal is closing
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
 
   const openModal = () => {
     setIsModalOpen(true);
-    setIsClosing(false); // Reset closing state when opening
+    setIsClosing(false);
   };
 
   const closeModal = () => {
-    // Trigger closing animation before actually closing the modal
     setIsClosing(true);
     setTimeout(() => {
       setIsModalOpen(false);
-    }, 400); // Match the duration of your closing animation (400ms)
+    }, 400);
   };
 
   return (
     <div className="account-container">
       <h1 className="account-header">Create New Account</h1>
 
-      {/* Single Button to open the modal */}
       <button onClick={openModal} className="create-account-button">
         Create New Account
       </button>
 
-      {/* Modal Section */}
       {isModalOpen && (
         <div
           className={`modal ${isClosing ? "modal-closing" : "modal-open"}`}
@@ -59,7 +56,6 @@ const CreateAndDeploySchnorrAccount: React.FC = () => {
               </button>
             </form>
 
-            {/* Close Button */}
             <button onClick={closeModal} className="close-button">
               Close
             </button>
@@ -67,7 +63,6 @@ const CreateAndDeploySchnorrAccount: React.FC = () => {
         </div>
       )}
 
-      {/* Address section remains unchanged */}
       <div className="address-section">
         <h3 className="address-header">Generated Schnorr Addresses</h3>
         {addresses.length > 0 ? (
