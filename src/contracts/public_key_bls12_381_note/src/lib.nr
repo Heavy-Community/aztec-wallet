@@ -14,8 +14,8 @@ struct BLS12381PublicKeyNote {
     y: [u8; 48],
     // We store the npk_m_hash only to get the secret key to compute the nullifier
     npk_m_hash: Field,
-
 }
+
 impl NoteInterface<BLS12381_PUBLIC_KEY_NOTE_LEN, BLS12381_PUBLIC_KEY_NOTE_BYTES_LEN> for BLS12381PublicKeyNote {
     // [0] = x_1[0..31]
     // [1] = x_2[0..17]
@@ -104,4 +104,9 @@ impl BLS12381PublicKeyNote {
     pub fn new(x: [u8; 48], y: [u8; 48], npk_m_hash: Field) -> Self {
         Self { x, y, npk_m_hash, header: NoteHeader::empty() }
     }
+}
+
+// TODO: Reference: https://datatracker.ietf.org/doc/html/draft-irtf-cfrg-bls-signature-00#section-2.6
+fn verify_signature(public_key_x: [u8; 48], public_key_y: [u8; 48], signature: [u8; 192], message_hash: [u8]) -> bool {
+    true
 }
