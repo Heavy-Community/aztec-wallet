@@ -2,6 +2,55 @@
 
 ## Overview
 
+BLS12-381 – (Work in progress) A curve for pairing-based cryptography, commonly used in multi-signature schemes.
+ECDSA (Ethereum's Curve) – The elliptic curve used by Ethereum, ensuring compatibility with Ethereum-based applications.
+Schnorr – Known for its efficient and secure signature scheme, providing enhanced privacy features.
+
+#### BabyJubJub
+
+Structure of programs and smart contracts related to the BabyJubJub elliptic curve
+
+```
+src
+├── contracts/
+│   ├── babyjubjub_public_key_note/ // Creates, stores, de/serialize and computes nullifier of BabyJubJub public key
+│   │   ├── src/
+│   │   │    └── lib.nr
+│   │   └── Nargo.toml
+│   │
+│   ├── babyjubjub_account/ // Main entrypoint of the BabyJubJub account, verifies its implementation.
+│   │   ├── src/
+│   │   │    └── main.nr
+│   │   └── Nargo.toml
+│   │
+├── accounts/
+│   ├── baby_jubjub/
+│   │   ├── interface/
+│   │   │    └── signature.ts
+│   │   ├── account_contract.ts // Authenticates transactions with BabyJubJub signatures verified
+│   │   │                       // against a public key in an immutable encrypted note.
+│   │   │
+│   │   ├── index.ts // BabyJubjub signature construction and helper operations.
+│   │   └── signature.ts // BabyJubJub signature used for transactions.
+│   │
+│   └── babyjubjub.ts // Creates an Account Manager using a BabyJubJub key for authentication and retrieves a wallet with BabyJubJub signatures.
+│
+├── hooks/
+│   └── useBabyJubJub.tsx
+```
+
+A lightweight elliptic curve optimized for zk-SNARKs, offering privacy and scalability.
+
+<h3>The noir smart contracts implementation is practically ready but needs barretenberg cpp backend.</h3>
+
+> [!IMPORTANT]
+
+#### Bls12381
+
+#### ecdsa
+
+#### schnorr
+
 ## Installation
 
 ### Prerequisites
@@ -20,9 +69,10 @@ You need two global dependencies in your machine:
 
 5.  Go to the `src/contracts` to compile and generate contracts ABI artifacts. - go to the `babyjubjub_account`, `ecdsa_k_account` and `account_schnorr` directories respectively and execute
 
-        aztec-nargo compile --silence-warnings
+            aztec-nargo compile --silence-warnings
 
-this will compile each contract.
+    dependencies
+    this will compile each contract.
 
 - to generate the ABI artifacts, run (_again for each contract_)
 
