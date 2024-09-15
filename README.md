@@ -2,7 +2,9 @@
 
 ## Overview
 
-#### BabyJubJub
+<h3>The curves that are used to create the account abstractions are:</h3>
+
+### BabyJubJub
 
 A lightweight elliptic curve optimized for zk-SNARKs, offering privacy and scalability.
 Structure of programs and smart contracts related to the BabyJubJub elliptic curve
@@ -41,7 +43,7 @@ src
 > [!IMPORTANT]
 > As shown in the structure above, there is an AztecJS implementation of the BabyJubJub signature verification and creation, the account creation with the help of `BarretenbergSync` from the `bb.js` library. That's why the deployment of the account created with the BabyJubJub curve isn't yet available because of the aforementioned reasons. But since it's using 64 bytes for signature and 32 bytes for the public key's coordinates which are the same as Schnorr's signature and public key coordinates respecitvely, we are using Schnorr's barretenberg cpp implementation for the sake of PoC.
 
-#### Bls12381
+### Bls12381
 
 (Ongoing development) A curve for pairing-based cryptography, commonly used in multi-signature schemes.
 Structure of programs and smart contracts related to the Bls12381 elliptic curve:
@@ -64,13 +66,28 @@ src
 
 ```
 
+<h4>The implementation of the bls curve library is compatible to be computed over the bn254 field</h4>
+
+### schnorr
+
+Schnorr – Known for its efficient and secure signature scheme, providing enhanced privacy features.
+
+<h4>Successful account creation and deployment with hardcoded public key.</h4>
+
+```
+src
+├── contracts/
+│   ├── account_schnorr/
+│   │   ├── src/
+│   │   │    └── main.nr
+│   │   └── Nargo.toml
+│   ├── hooks/
+│   │   └── useSchnorr.tsx
+```
+
 #### ecdsa
 
 ECDSA (Ethereum's Curve) – The elliptic curve used by Ethereum, ensuring compatibility with Ethereum-based applications.
-
-#### schnorr
-
-Schnorr – Known for its efficient and secure signature scheme, providing enhanced privacy features.
 
 ## Installation
 
