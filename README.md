@@ -2,12 +2,9 @@
 
 ## Overview
 
-BLS12-381 – (Work in progress) A curve for pairing-based cryptography, commonly used in multi-signature schemes.
-ECDSA (Ethereum's Curve) – The elliptic curve used by Ethereum, ensuring compatibility with Ethereum-based applications.
-Schnorr – Known for its efficient and secure signature scheme, providing enhanced privacy features.
-
 #### BabyJubJub
 
+A lightweight elliptic curve optimized for zk-SNARKs, offering privacy and scalability.
 Structure of programs and smart contracts related to the BabyJubJub elliptic curve
 
 ```
@@ -39,17 +36,41 @@ src
 │   └── useBabyJubJub.tsx
 ```
 
-A lightweight elliptic curve optimized for zk-SNARKs, offering privacy and scalability.
-
-<h3>The noir smart contracts implementation is practically ready but needs barretenberg cpp backend.</h3>
+<h3>⚠️ The noir smart contracts implementation is practically ready but needs barretenberg cpp backend. ⚠️</h3>
 
 > [!IMPORTANT]
+> As shown in the structure above, there is an AztecJS implementation of the BabyJubJub signature verification and creation, the account creation with the help of `BarretenbergSync` from the `bb.js` library. That's why the deployment of the account created with the BabyJubJub curve isn't yet available because of the aforementioned reasons. But since it's using 64 bytes for signature and 32 bytes for the public key's coordinates which are the same as Schnorr's signature and public key coordinates respecitvely, we are using Schnorr's barretenberg cpp implementation for the sake of PoC.
 
 #### Bls12381
 
+(Ongoing development) A curve for pairing-based cryptography, commonly used in multi-signature schemes.
+Structure of programs and smart contracts related to the Bls12381 elliptic curve:
+
+```
+src
+├── contracts/
+│   ├── public_key_bls12_381_note/
+│   │   │                          // Creates, stores, de/serialize and computes
+│   │   │                          // nullifier of bls12381 public key.
+│   │   │                          // Serialized to be compatible for the 254 bits field size.
+│   │   ├── src/
+│   │   │    └── lib.nr
+│   │   └── Nargo.toml
+│   │
+│   ├── bls12_381_account/ // Main entrypoint of the Bls12381 account, verifies its implementation.
+│   │   ├── src/
+│   │   │    └── main.nr
+│   │   └── Nargo.toml
+
+```
+
 #### ecdsa
 
+ECDSA (Ethereum's Curve) – The elliptic curve used by Ethereum, ensuring compatibility with Ethereum-based applications.
+
 #### schnorr
+
+Schnorr – Known for its efficient and secure signature scheme, providing enhanced privacy features.
 
 ## Installation
 
@@ -66,6 +87,8 @@ You need two global dependencies in your machine:
 4.  Once these have been installed, to start the sandbox, run:
 
         aztec start --sandbox
+
+### Steps
 
 5.  Go to the `src/contracts` to compile and generate contracts ABI artifacts. - go to the `babyjubjub_account`, `ecdsa_k_account` and `account_schnorr` directories respectively and execute
 
