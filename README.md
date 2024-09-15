@@ -2,6 +2,14 @@
 
 ## Overview
 
+- Contracts: The Contracts directory contains Noir smart contracts for various account implementations, including BabyJubJub, Bls12381, Schnorr, and ECDSA. These contracts define the logic for account creation, key management, and transaction verification on the Aztec network.
+
+- Hooks: This directory includes React hooks such as `useBabyJubJub` and `useSchnorr`. These hooks integrate account functionality into the UI, making it easier to manage accounts and perform operations using different cryptographic curves.
+
+- Pages: The Pages directory contains React components for account creation, management, and transaction handling. These components form the user interface of the wallet application.
+
+- Accounts: This directory contains TypeScript implementations for account management, with a focus on BabyJubJub and potentially other curves. It includes files for handling account contracts, signatures, and interfaces specific to different cryptographic curves.
+
 <h3>The curves that are used to create the account abstractions are:</h3>
 
 ### BabyJubJub
